@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Android_Pipeline">
+
+	<import file="common.xml" />
+	
+	<!-- Target Special Properties -->
+	
+	<!-- Name tag -->
+	<property name="release.branch" value="youmi" />
+	<!-- AndroidManifest file path, use different fold to distinct
+		because the name must be exact "AndroidManifest.xml", -->
+	<property name="release.manifest" 
+		value="ManifestFiles/Youmi/AndroidManifest.xml" />
+	<!-- Coinfig Setting -->
+	<property name="config.logging" 
+		value="true"/>
+	<property name="config.testmode" 
+		value="false"/>
+	<property name="config.offer" 
+		value="YOUMI"/>
+	<property name="config.ads.youmi.appid"
+		value="your youmi appid" />
+	<property name="config.ads.youmi.appsec"
+		value="your youmi appsec" />
+		
+	<!-- Directory for the third party java libraries -->
+	<property name="jar.libs.dir" value="libs" />
+	<property name="jar.libs.absolute.dir" location="${jar.libs.dir}" />
+	<!-- create a path with all the jar files, from the main project and the
+		libraries -->
+	<path id="jar.libs.ref">
+		<fileset dir="${jar.libs.absolute.dir}" includes="youmi-android-v3.03_2011-9-30.jar" />
+		<path refid="project.libraries.jars" />
+	</path>
+	
+	<import file="main.xml" />
+
+</project>

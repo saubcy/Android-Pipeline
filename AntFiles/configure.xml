@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="configure">
+	
+	<target name="check_property">
+		<condition property="isOfferSet">
+			<isset property="config.offer" />
+		</condition>
+				
+		<condition property="isGoldSet">
+			<isset property="config.gold" />
+		</condition>
+	</target>
+	
+	<target name="set_offer_none"
+		depends="check_property"
+		unless="isOfferSet" >
+		<echo message="set_offer_none" />
+		<property name="config.offer" 
+			value="NONE"/>
+	</target>
+	
+	<target name="set_gold_none"
+		depends="check_property"
+		unless="isGoldSet">
+		<echo message="set_gold_none" />
+		<property name="config.gold" 
+			value="NONE"/>
+	</target>
+
+	<target name="config" depends="set_offer_none, set_gold_none">
+		
+		<!-- Copy the configuration file, replacing tokens in the file. -->
+		<copy file="${release.config.file}" 
+			tofile="${release.config.dir}/${release.config.package}/Config.java"
+		    overwrite="true" encoding="utf-8">
+			<filterset>
+				<filter token="CONFIG.LOGGING" 
+					value="${config.logging}"/>
+				<filter token="CONFIG.TESTMODE" 
+					value="${config.testmode}"/>
+				<filter token="CONFIG.OFFER"
+					value="AdsFactory.Offers.${config.offer}" />
+				<filter token="CONFIG.GOLD"
+					value="GoldFactory.Offers.${config.gold}" />
+				
+				<filter token="CONFIG.ADS.ADWO.PID"
+					value="${config.ads.adwo.pid}" />
+				
+				<filter token="CONFIG.ADS.ADMOB.PID"
+					value="${config.ads.admob.pid}" />
+				
+				<filter token="CONFIG.ADS.YOUMI.APPID"
+					value="${config.ads.youmi.appid}" />
+				<filter token="CONFIG.ADS.YOUMI.APPSEC"
+					value="${config.ads.youmi.appsec}" />
+				
+				<filter token="CONFIG.ADS.APPMEDIA.PID"
+					value="${config.ads.appmedia.pid}" />
+				
+				<filter token="CONFIG.GOLD.YOUMI.APPID"
+					value="${config.gold.youmi.appid}" />
+				<filter token="CONFIG.GOLD.YOUMI.APPSEC"
+					value="${config.gold.youmi.appsec}" />
+			</filterset>
+		</copy>
+	
+		<!-- Set it to read-only -->
+		<!--
+		<chmod file="${release.config.target}/Config.java" perm="-w"/>
+		<attrib file="${release.config.target}/Config.java" readonly="true"/>
+		-->
+	</target>
+
+</project>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="common">
+	
+	<!-- The config file target path -->
+	<property name="release.config.dir" location="src" />
+	<property name="release.config.package" value="/com/saubcy/conf" />
+	<property name="release.config.file" 
+		value="Config/Config.java"/>
+
+</project>
