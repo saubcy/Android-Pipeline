@@ -1,0 +1,7 @@
+该工程的目的是使用同一份程序代码配合多份不同的ANT配置脚本，执行一条命令便可导出多份不同包名使用不同广告商SDK的程序安装包。
+目前支持的广告商包括admob, adwo, appmedia, youmi
+
+根据目录文件说明：
+1. AntFiles下面放置的是其中v_xxx.xml是针对某个特定版本的ANT属性配置文件，其他都是公共文件无需做修改；
+2. ManifestFiles下各文件夹放置的是不同版本程序用到的AndroidManifest.xml文件；
+3. local.properties中SDK的目录需要根据本机的情况作调整。
