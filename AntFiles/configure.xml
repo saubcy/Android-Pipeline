@@ -9,6 +9,10 @@
 		<condition property="isGoldSet">
 			<isset property="config.gold" />
 		</condition>
+		
+		<condition property="isStatSet">
+			<isset property="config.stat"/>
+		</condition>
 	</target>
 	
 	<target name="set_offer_none"
@@ -26,8 +30,17 @@
 		<property name="config.gold" 
 			value="NONE"/>
 	</target>
+	
+	<target name="set_stat_none"
+		depends="check_property"
+		unless="isStatSet">
+		<echo message="set_stat_none" />
+		<property name="config.stat" 
+			value="NONE"/>
+	</target>
 
-	<target name="config" depends="set_offer_none, set_gold_none">
+	<target name="config" 
+		depends="set_offer_none, set_gold_none, set_stat_none">
 		
 		<!-- Copy the configuration file, replacing tokens in the file. -->
 		<copy file="${release.config.file}" 
@@ -39,9 +52,11 @@
 				<filter token="CONFIG.TESTMODE" 
 					value="${config.testmode}"/>
 				<filter token="CONFIG.OFFER"
-					value="AdsFactory.Offers.${config.offer}" />
+					value="AdsManager.Offers.${config.offer}" />
 				<filter token="CONFIG.GOLD"
-					value="GoldFactory.Offers.${config.gold}" />
+					value="GoldManager.Offers.${config.gold}" />
+				<filter token="CONFIG.STAT"
+					value="StatManager.Offers.${config.stat}" />
 				
 				<filter token="CONFIG.ADS.ADWO.PID"
 					value="${config.ads.adwo.pid}" />
@@ -61,6 +76,16 @@
 					value="${config.gold.youmi.appid}" />
 				<filter token="CONFIG.GOLD.YOUMI.APPSEC"
 					value="${config.gold.youmi.appsec}" />
+				
+				<filter token="CONFIG.GOLD.WIYUN.APPID"
+					value="${config.gold.wiyun.appid}" />
+				<filter token="CONFIG.GOLD.WIYUN.APPSEC"
+					value="${config.gold.wiyun.appsec}" />
+				
+				<filter token="CONFIG.GOLD.TAPJOY.APPID"
+					value="${config.gold.tapjoy.appid}" />
+				<filter token="CONFIG.GOLD.TAPJOY.APPSEC"
+					value="${config.gold.tapjoy.appsec}" />
 			</filterset>
 		</copy>
 	

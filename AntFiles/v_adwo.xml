@@ -4,13 +4,14 @@
 	<import file="common.xml" />
 	
 	<!-- Target Special Properties -->
-	
 	<!-- Name tag -->
 	<property name="release.branch" value="adwo" />
 	<!-- AndroidManifest file path, use different fold to distinct
 		because the name must be exact "AndroidManifest.xml", -->
 	<property name="release.manifest" 
 		value="ManifestFiles/Adwo/AndroidManifest.xml" />
+	<!-- resource fold -->
+	<property name="release.res" value="Resource/Adwo" />
 	<!-- Coinfig Setting -->
 	<property name="config.logging" 
 		value="true"/>
@@ -19,7 +20,7 @@
 	<property name="config.offer" 
 		value="ADWO"/>
 	<property name="config.ads.adwo.pid"
-		value="your admob key" />
+		value="2b8dbd92edd74a97b3ba6b0189bef125" />
 		
 	<!-- Directory for the third party java libraries -->
 	<property name="jar.libs.dir" value="libs" />
@@ -28,6 +29,7 @@
 		libraries -->
 	<path id="jar.libs.ref">
 		<fileset dir="${jar.libs.absolute.dir}" includes="adwosdk2.3.3.jar" />
+		<fileset dir="${jar.libs.absolute.dir}" includes="android_pipeline.jar" />
 		<path refid="project.libraries.jars" />
 	</path>
 	

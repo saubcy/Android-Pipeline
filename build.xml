@@ -13,6 +13,10 @@
 		<antcall target="youmi"/>
 		<antcall target="appmedia"/>
 		<antcall target="youmigold"/>
+		<antcall target="wiyungold"/>
+		<antcall target="wapsgold"/>
+		<antcall target="tapjoygold"/>
+		<antcall target="umeng"/>
 	</target>
 	
 	<target name="clean">
@@ -59,6 +63,38 @@
 			target="clean"/>
 		<echo message="build youmi gold"/>
 		<ant antfile="AntFiles/v_youmigold.xml" 
+			target="release"/>
+	</target>
+	
+	<target name="wiyungold">
+		<ant antfile="AntFiles/v_wiyungold.xml" 
+			target="clean"/>
+		<echo message="build wiyun gold"/>
+		<ant antfile="AntFiles/v_wiyungold.xml" 
+			target="release"/>
+	</target>
+	
+	<target name="wapsgold">
+		<ant antfile="AntFiles/v_wapsgold.xml" 
+			target="clean"/>
+		<echo message="build waps gold"/>
+		<ant antfile="AntFiles/v_wapsgold.xml" 
+			target="release"/>
+	</target>
+	
+	<target name="tapjoygold">
+		<ant antfile="AntFiles/v_tapjoygold.xml" 
+			target="clean"/>
+		<echo message="build tapjoy gold"/>
+		<ant antfile="AntFiles/v_tapjoygold.xml" 
+			target="release"/>
+	</target>
+	
+	<target name="umeng">
+		<ant antfile="AntFiles/v_umeng.xml" 
+			target="clean"/>
+		<echo message="build umeng gold"/>
+		<ant antfile="AntFiles/v_umeng.xml" 
 			target="release"/>
 	</target>
 </project>

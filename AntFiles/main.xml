@@ -45,7 +45,7 @@
 	<property name="source.absolute.dir" location="${source.dir}" />
 	<property name="gen.dir" value="gen" />
 	<property name="gen.absolute.dir" location="${gen.dir}" />
-	<property name="resource.dir" value="res" />
+	<property name="resource.dir" value="${release.res}" />
 	<property name="resource.absolute.dir" location="${resource.dir}" />
 	<property name="asset.dir" value="assets" />
 	<property name="asset.absolute.dir" location="${asset.dir}" />
@@ -108,8 +108,8 @@
 
 	<!-- compilation options -->
 	<property name="java.encoding" value="UTF-8" />
-	<property name="java.target" value="1.5" />
-	<property name="java.source" value="1.5" />
+	<property name="java.target" value="1.6" />
+	<property name="java.source" value="1.6" />
 
 	<!-- Verbosity -->
 	<property name="verbose" value="false" />

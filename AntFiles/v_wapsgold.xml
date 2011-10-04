@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Android_Pipeline">
+
+	<import file="common.xml" />
+	
+	<!-- Target Special Properties -->
+	
+	<!-- Name tag -->
+	<property name="release.branch" value="wapsgold" />
+	<!-- AndroidManifest file path, use different fold to distinct
+		because the name must be exact "AndroidManifest.xml", -->
+	<property name="release.manifest" 
+		value="ManifestFiles/WapsGold/AndroidManifest.xml" />
+	<!-- resource fold -->
+	<property name="release.res" value="Resource/WapsGold" />
+	<!-- Coinfig Setting -->
+	<property name="config.logging" 
+		value="true"/>
+	<property name="config.testmode" 
+		value="false"/>
+	<property name="config.gold" 
+		value="WAPS"/>
+		
+	<!-- Directory for the third party java libraries -->
+	<property name="jar.libs.dir" value="libs" />
+	<property name="jar.libs.absolute.dir" location="${jar.libs.dir}" />
+	<!-- create a path with all the jar files, from the main project and the
+		libraries -->
+	<path id="jar.libs.ref">
+		<fileset dir="${jar.libs.absolute.dir}" includes="AppOffer_1.5.2.jar" />
+		<fileset dir="${jar.libs.absolute.dir}" includes="android_pipeline.jar" />
+		<path refid="project.libraries.jars" />
+	</path>
+	
+	<import file="main.xml" />
+
+</project>

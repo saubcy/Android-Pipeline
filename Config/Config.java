@@ -1,29 +1,82 @@
 package com.saubcy.conf;
 
-import com.saubcy.ads.AdsFactory;
-import com.saubcy.gold.GoldFactory;
+import com.saubcy.pipeline.ads.AdsManager;
+import com.saubcy.pipeline.gold.GoldManager;
+import com.saubcy.pipeline.stat.StatManager;
 
 public class Config
 {
-    public final static boolean LOGGING = @CONFIG.LOGGING@;
+	public static GoldManager gm = new GoldManager();
+	
+	public static AdsManager.Offers AdOffer = @CONFIG.OFFER@;
+	
+	public static GoldManager.Offers GoldOffer = @CONFIG.GOLD@;
+	
+	public static StatManager.Offers StatOffer = @CONFIG.STAT@;
+	
+    public static boolean getLOGGING() {
+    	return @CONFIG.LOGGING@;
+    }
     
-    public final static boolean TESTMODE = @CONFIG.TESTMODE@;
+    public static boolean getTESTMODE() {
+    	return @CONFIG.TESTMODE@;
+    }
      
-    public final static AdsFactory.Offers offer = @CONFIG.OFFER@;
+    public static AdsManager.Offers getOffer() {
+    	return AdOffer;
+    }
     
-    public final static GoldFactory.Offers offerG = @CONFIG.GOLD@;
+    public static GoldManager.Offers getGoldOffer() {
+    	return GoldOffer;
+    }
+    
+    public static StatManager.Offers getStatOffer() {
+    	return StatOffer;
+    }
     
     // AD OFFSER IDS
-    public final static String Adwo_PID = "@CONFIG.ADS.ADWO.PID@";
+    public static String getAdwo_PID() {
+    	return "@CONFIG.ADS.ADWO.PID@";
+    }
     
-    public final static String AdMob_PID = "@CONFIG.ADS.ADMOB.PID@";
+    public static String getAdMob_PID() {
+    	return "@CONFIG.ADS.ADMOB.PID@";
+    }
     
-    public final static String Youmi_APPID = "@CONFIG.ADS.YOUMI.APPID@";
-    public final static String Youmi_APPSEC = "@CONFIG.ADS.YOUMI.APPSEC@";
+    public static String getYoumi_APPID() {
+    	return "@CONFIG.ADS.YOUMI.APPID@";
+    }
     
-    public final static String AppMedia_PID = "@CONFIG.ADS.APPMEDIA.PID@";
+    public static String getYoumi_APPSEC() {
+    	return "@CONFIG.ADS.YOUMI.APPSEC@";
+    }
+    
+    public static String getAppMedia_PID() {
+    	return "@CONFIG.ADS.APPMEDIA.PID@";
+    }
     
     // GOLD OFFER IDS
-    public final static String Youmi_Gold_APPID = "@CONFIG.GOLD.YOUMI.APPID@";
-    public final static String Youmi_Gold_APPSEC = "@CONFIG.GOLD.YOUMI.APPSEC@";
+    public static String getYoumi_Gold_APPID() {
+    	return "@CONFIG.GOLD.YOUMI.APPID@";
+    }
+    
+    public static String getYoumi_Gold_APPSEC() {
+    	return "@CONFIG.GOLD.YOUMI.APPSEC@";
+    }
+    
+    public static String getWiyun_Gold_APPID() {
+    	return "@CONFIG.GOLD.WIYUN.APPID@";
+    }
+    
+    public static String getWiyun_Gold_APPSEC() {
+    	return "@CONFIG.GOLD.WIYUN.APPSEC@";
+    }
+    
+    public static String getTapjoy_Gold_APPID() {
+    	return "@CONFIG.GOLD.TAPJOY.APPID@";
+    }
+    
+    public static String getTapjoy_Gold_APPSEC() {
+    	return "@CONFIG.GOLD.TAPJOY.APPSEC@";
+    }
 }

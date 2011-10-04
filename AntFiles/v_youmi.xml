@@ -11,6 +11,8 @@
 		because the name must be exact "AndroidManifest.xml", -->
 	<property name="release.manifest" 
 		value="ManifestFiles/Youmi/AndroidManifest.xml" />
+	<!-- resource fold -->
+	<property name="release.res" value="Resource/Youmi" />
 	<!-- Coinfig Setting -->
 	<property name="config.logging" 
 		value="true"/>
@@ -19,9 +21,9 @@
 	<property name="config.offer" 
 		value="YOUMI"/>
 	<property name="config.ads.youmi.appid"
-		value="your youmi appid" />
+		value="537ef88653a2993c" />
 	<property name="config.ads.youmi.appsec"
-		value="your youmi appsec" />
+		value="b9e10bcfe994a9fb" />
 		
 	<!-- Directory for the third party java libraries -->
 	<property name="jar.libs.dir" value="libs" />
@@ -30,6 +32,7 @@
 		libraries -->
 	<path id="jar.libs.ref">
 		<fileset dir="${jar.libs.absolute.dir}" includes="youmi-android-v3.03_2011-9-30.jar" />
+		<fileset dir="${jar.libs.absolute.dir}" includes="android_pipeline.jar" />
 		<path refid="project.libraries.jars" />
 	</path>
 	
