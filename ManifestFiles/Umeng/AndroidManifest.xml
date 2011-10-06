@@ -14,9 +14,6 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="net.youmi.android.appoffers.AppOffersActivity"
-			android:configChanges="keyboard|keyboardHidden|orientation"></activity>
-			
 		<meta-data android:value="4d5a0891112cf757e20781d3" 
 			android:name="UMENG_APPKEY" /> 
 		<meta-data android:value="friends" 

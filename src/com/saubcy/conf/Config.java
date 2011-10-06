@@ -8,11 +8,11 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.NONE;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.ADWO;
 	
 	public static GoldManager.Offers GoldOffer = GoldManager.Offers.NONE;
 	
-	public static StatManager.Offers StatOffer = StatManager.Offers.UMENG;
+	public static StatManager.Offers StatOffer = StatManager.Offers.NONE;
 	
     public static boolean getLOGGING() {
     	return true;
@@ -36,7 +36,7 @@ public class Config
     
     // AD OFFSER IDS
     public static String getAdwo_PID() {
-    	return "${config.ads.adwo.pid}";
+    	return "2b8dbd92edd74a97b3ba6b0189bef125";
     }
     
     public static String getAdMob_PID() {

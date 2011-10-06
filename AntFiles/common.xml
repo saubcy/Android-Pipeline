@@ -6,5 +6,22 @@
 	<property name="release.config.package" value="/com/saubcy/conf" />
 	<property name="release.config.file" 
 		value="Config/Config.java"/>
-
+	<property name="ads.admob" 
+		value="GoogleAdMobAdsSdk-4.1.1.jar" />
+	<property name="ads.adwo"
+		value="adwosdk2.3.3.jar" />
+	<property name="ads.appmedia"
+		value="AppMediaAdAndroidSdk-1.0.3.jar" />
+	<property name="gold.tapjoy" 
+		value="tapjoy_8.1.1.jar" />
+	<property name="stat.umeng"
+		value="Analytics_Android_SDK_3.0.jar" />
+	<property name="gold.waps"
+		value="AppOffer_1.5.2.jar" />
+	<property name="gold.wiyun"
+		value="WiOffer.jar" />
+	<property name="ads.youmi"
+		value="youmi-android-v3.03_2011-9-30.jar" />
+	<property name="gold.youmi"
+		value="youmi-appoffer_2011-8-29.jar" />
 </project>

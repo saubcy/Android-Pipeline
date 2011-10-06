@@ -27,7 +27,7 @@
 	<!-- create a path with all the jar files, from the main project and the
 		libraries -->
 	<path id="jar.libs.ref">
-		<fileset dir="${jar.libs.absolute.dir}" includes="Analytics_Android_SDK_3.0.jar" />
+		<fileset dir="${jar.libs.absolute.dir}" includes="${stat.umeng}" />
 		<fileset dir="${jar.libs.absolute.dir}" includes="android_pipeline.jar" />
 		<path refid="project.libraries.jars" />
 	</path>

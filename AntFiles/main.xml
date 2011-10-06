@@ -239,6 +239,10 @@
 	    <attribute name="out.package" />
 	    <sequential>
 	    	<echo>Running zip align on final apk...</echo>
+	    	<echo>zipalign: ${zipalign}</echo>
+	    	<echo>v.option: ${v.option}</echo>
+	    	<echo>in.package: ${in.package}</echo>
+	    	<echo>out.package: ${out.package}</echo>
 	        <exec executable="${zipalign}" failonerror="true">
 	        	<arg line="${v.option}" />
 	            <arg value="-f" />
@@ -663,6 +667,7 @@
 	    </target>
 
 	    <target name="clean" description="Removes output files created by other targets.">
+	    	<echo>Clean...</echo>
 	        <delete dir="${out.absolute.dir}" verbose="${verbose}" />
 	        <delete dir="${gen.absolute.dir}" verbose="${verbose}" />
 	    </target>

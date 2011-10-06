@@ -29,7 +29,7 @@
 	<!-- create a path with all the jar files, from the main project and the
 		libraries -->
 	<path id="jar.libs.ref">
-		<fileset dir="${jar.libs.absolute.dir}" includes="AppMediaAdAndroidSdk-1.0.3.jar" />
+		<fileset dir="${jar.libs.absolute.dir}" includes="${ads.appmedia}" />
 		<fileset dir="${jar.libs.absolute.dir}" includes="android_pipeline.jar" />
 		<path refid="project.libraries.jars" />
 	</path>

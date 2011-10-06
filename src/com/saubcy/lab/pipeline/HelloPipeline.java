@@ -86,4 +86,10 @@ implements GoldNotifier{
 			Log.d("trace", "failed: "+reason);
 		}
 	}
+
+	@Override
+	protected void onDestroy() {
+		AdsManager.destoryAds(Config.getOffer(), adView);
+		super.onDestroy();
+	}
 }
