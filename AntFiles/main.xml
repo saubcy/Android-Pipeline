@@ -79,7 +79,8 @@
     <property name="source.dir" value="src" />
     <property name="source.absolute.dir" location="${source.dir}" />
     <property name="gen.absolute.dir" location="gen" />
-    <property name="resource.absolute.dir" location="res" />
+	<property name="resource.dir" value="${release.res}" />
+    <property name="resource.absolute.dir" location="${resource.dir}" />
     <property name="asset.absolute.dir" location="assets" />
     <property name="jar.libs.dir" value="libs" />
     <property name="jar.libs.absolute.dir" location="${jar.libs.dir}" />

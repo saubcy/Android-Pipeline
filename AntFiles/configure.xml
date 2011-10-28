@@ -77,6 +77,9 @@
 				<filter token="CONFIG.ADS.MIIDI.APPSEC"
 					value="${config.ads.miidi.appsec}" />
 				
+				<filter token="CONFIG.ADS.WIYUN.WIADID"
+					value="${config.ads.wiyun.wiadid}" />
+				
 				<filter token="CONFIG.GOLD.YOUMI.APPID"
 					value="${config.gold.youmi.appid}" />
 				<filter token="CONFIG.GOLD.YOUMI.APPSEC"

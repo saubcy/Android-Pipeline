@@ -8,9 +8,9 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.NONE;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.WIYUN;
 	
-	public static GoldManager.Offers GoldOffer = GoldManager.Offers.MIIDI;
+	public static GoldManager.Offers GoldOffer = GoldManager.Offers.NONE;
 	
 	public static StatManager.Offers StatOffer = StatManager.Offers.NONE;
 	
@@ -19,7 +19,7 @@ public class Config
     }
     
     public static boolean getTESTMODE() {
-    	return false;
+    	return true;
     }
      
     public static AdsManager.Offers getOffer() {
@@ -33,6 +33,10 @@ public class Config
     public static StatManager.Offers getStatOffer() {
     	return StatOffer;
     }
+    
+    public static String getWIYUN_WIADID() {
+		return "b7e9aa58c156e083";
+	}
     
     // AD OFFSER IDS
     public static String getAdwo_PID() {
@@ -89,10 +93,10 @@ public class Config
     }
     
     public static String getMiidi_Gold_APPID() {
-		return "1497";
+		return "${config.gold.miidi.appid}";
 	}
 	
 	public static String getMiidi_Gold_APPSEC() {
-		return "064pgbqcrlhbxok0";
+		return "${config.gold.miidi.appsec}";
 	}
 }

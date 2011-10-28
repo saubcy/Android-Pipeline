@@ -34,6 +34,10 @@ public class Config
     	return StatOffer;
     }
     
+    public static String getWIYUN_WIADID() {
+		return "@CONFIG.ADS.WIYUN.WIADID@";
+	}
+    
     // AD OFFSER IDS
     public static String getAdwo_PID() {
     	return "@CONFIG.ADS.ADWO.PID@";

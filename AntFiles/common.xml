@@ -14,6 +14,9 @@
 		value="AppMediaAdAndroidSdk-1.0.3.jar" />
 	<property name="ads.miidi"
 		value="adk_android_1_0_6.jar" />
+	<property name="ads.wiyun"
+		value="WiAd.jar" />
+	
 	<property name="gold.tapjoy" 
 		value="tapjoy_8.1.1.jar" />
 	<property name="stat.umeng"

@@ -113,4 +113,12 @@
 			<ant antfile="AntFiles/v_miidigold.xml" 
 				target="release"/>
 		</target>
+	
+		<target name="wiyun">
+			<ant antfile="AntFiles/v_wiyun.xml" 
+				target="clean"/>
+			<echo message="build wiyun"/>
+			<ant antfile="AntFiles/v_wiyun.xml" 
+				target="release"/>
+		</target>
 </project>
