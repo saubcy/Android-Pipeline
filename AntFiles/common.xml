@@ -12,6 +12,8 @@
 		value="adwosdk2.3.3.jar" />
 	<property name="ads.appmedia"
 		value="AppMediaAdAndroidSdk-1.0.3.jar" />
+	<property name="ads.miidi"
+		value="adk_android_1_0_6.jar" />
 	<property name="gold.tapjoy" 
 		value="tapjoy_8.1.1.jar" />
 	<property name="stat.umeng"
@@ -24,4 +26,6 @@
 		value="youmi-android-v3.03_2011-9-30.jar" />
 	<property name="gold.youmi"
 		value="youmi-appoffer_2011-8-29.jar" />
+	<property name="gold.miidi"
+		value="miidicredit_android_1_0_3.jar" />
 </project>

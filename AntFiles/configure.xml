@@ -72,6 +72,11 @@
 				<filter token="CONFIG.ADS.APPMEDIA.PID"
 					value="${config.ads.appmedia.pid}" />
 				
+				<filter token="CONFIG.ADS.MIIDI.APPID"
+					value="${config.ads.miidi.appid}" />
+				<filter token="CONFIG.ADS.MIIDI.APPSEC"
+					value="${config.ads.miidi.appsec}" />
+				
 				<filter token="CONFIG.GOLD.YOUMI.APPID"
 					value="${config.gold.youmi.appid}" />
 				<filter token="CONFIG.GOLD.YOUMI.APPSEC"
@@ -86,6 +91,11 @@
 					value="${config.gold.tapjoy.appid}" />
 				<filter token="CONFIG.GOLD.TAPJOY.APPSEC"
 					value="${config.gold.tapjoy.appsec}" />
+				
+				<filter token="CONFIG.GOLD.MIIDI.APPID"
+					value="${config.gold.miidi.appid}" />
+				<filter token="CONFIG.GOLD.MIIDI.APPSEC"
+					value="${config.gold.miidi.appsec}" />
 			</filterset>
 		</copy>
 	

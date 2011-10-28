@@ -8,9 +8,9 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.ADWO;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.NONE;
 	
-	public static GoldManager.Offers GoldOffer = GoldManager.Offers.NONE;
+	public static GoldManager.Offers GoldOffer = GoldManager.Offers.MIIDI;
 	
 	public static StatManager.Offers StatOffer = StatManager.Offers.NONE;
 	
@@ -36,7 +36,7 @@ public class Config
     
     // AD OFFSER IDS
     public static String getAdwo_PID() {
-    	return "2b8dbd92edd74a97b3ba6b0189bef125";
+    	return "${config.ads.adwo.pid}";
     }
     
     public static String getAdMob_PID() {
@@ -54,6 +54,14 @@ public class Config
     public static String getAppMedia_PID() {
     	return "${config.ads.appmedia.pid}";
     }
+    
+    public static String getMiidi_APPID() {
+		return "${config.ads.miidi.appid}";
+	}
+	
+	public static String getMiidi_APPSEC() {
+		return "${config.ads.miidi.appsec}";
+	}
     
     // GOLD OFFER IDS
     public static String getYoumi_Gold_APPID() {
@@ -79,4 +87,12 @@ public class Config
     public static String getTapjoy_Gold_APPSEC() {
     	return "${config.gold.tapjoy.appsec}";
     }
+    
+    public static String getMiidi_Gold_APPID() {
+		return "1497";
+	}
+	
+	public static String getMiidi_Gold_APPSEC() {
+		return "064pgbqcrlhbxok0";
+	}
 }
