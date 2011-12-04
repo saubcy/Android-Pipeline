@@ -80,6 +80,12 @@
 				<filter token="CONFIG.ADS.WIYUN.WIADID"
 					value="${config.ads.wiyun.wiadid}" />
 				
+				<filter token="CONFIG.ADS.ADULTMODA.BANNER.ZONEID"
+					value="${config.ads.adultmoda.banner.zoneid}" />
+				
+				<filter token="CONFIG.ADS.ADULTMODA.TEXT.ZONEID"
+					value="${config.ads.adultmoda.text.zoneid}" />
+				
 				<filter token="CONFIG.GOLD.YOUMI.APPID"
 					value="${config.gold.youmi.appid}" />
 				<filter token="CONFIG.GOLD.YOUMI.APPSEC"

@@ -8,7 +8,7 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.WIYUN;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.ADULTMODA;
 	
 	public static GoldManager.Offers GoldOffer = GoldManager.Offers.NONE;
 	
@@ -19,7 +19,7 @@ public class Config
     }
     
     public static boolean getTESTMODE() {
-    	return true;
+    	return false;
     }
      
     public static AdsManager.Offers getOffer() {
@@ -35,9 +35,17 @@ public class Config
     }
     
     public static String getWIYUN_WIADID() {
-		return "b7e9aa58c156e083";
+		return "${config.ads.wiyun.wiadid}";
 	}
     
+    public static String getADULTMODA_BANNER_ZONEID() {
+		return "8622";
+	}
+	
+	public static String getADULTMODA_TEXT_ZONEID() {
+		return "8358";
+	}
+	
     // AD OFFSER IDS
     public static String getAdwo_PID() {
     	return "${config.ads.adwo.pid}";

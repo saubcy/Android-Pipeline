@@ -38,6 +38,14 @@ public class Config
 		return "@CONFIG.ADS.WIYUN.WIADID@";
 	}
     
+    public static String getADULTMODA_BANNER_ZONEID() {
+		return "@CONFIG.ADS.ADULTMODA.BANNER.ZONEID@";
+	}
+	
+	public static String getADULTMODA_TEXT_ZONEID() {
+		return "@CONFIG.ADS.ADULTMODA.TEXT.ZONEID@";
+	}
+	
     // AD OFFSER IDS
     public static String getAdwo_PID() {
     	return "@CONFIG.ADS.ADWO.PID@";
