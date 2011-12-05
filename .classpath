@@ -14,8 +14,8 @@
 	<classpathentry kind="lib" path="libs/android_pipeline.jar" sourcepath="/Android_Pipeline_Lib"/>
 	<classpathentry kind="lib" path="libs/Analytics_Android_SDK_3.0.jar"/>
 	<classpathentry kind="lib" path="libs/adk_android_1_0_6.jar"/>
-	<classpathentry kind="lib" path="libs/miidicredit_android_1_0_3.jar"/>
 	<classpathentry kind="lib" path="libs/WiAd.jar"/>
 	<classpathentry kind="lib" path="libs/adultmodasdk11.jar"/>
+	<classpathentry kind="lib" path="libs/miidicredit_android_1_5_4.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

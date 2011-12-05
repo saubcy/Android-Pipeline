@@ -8,9 +8,9 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.ADULTMODA;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.NONE;
 	
-	public static GoldManager.Offers GoldOffer = GoldManager.Offers.NONE;
+	public static GoldManager.Offers GoldOffer = GoldManager.Offers.MIIDI;
 	
 	public static StatManager.Offers StatOffer = StatManager.Offers.NONE;
 	
@@ -19,7 +19,7 @@ public class Config
     }
     
     public static boolean getTESTMODE() {
-    	return false;
+    	return true;
     }
      
     public static AdsManager.Offers getOffer() {
@@ -39,11 +39,11 @@ public class Config
 	}
     
     public static String getADULTMODA_BANNER_ZONEID() {
-		return "8622";
+		return "${config.ads.adultmoda.banner.zoneid}";
 	}
 	
 	public static String getADULTMODA_TEXT_ZONEID() {
-		return "8358";
+		return "${config.ads.adultmoda.text.zoneid}";
 	}
 	
     // AD OFFSER IDS
@@ -101,10 +101,10 @@ public class Config
     }
     
     public static String getMiidi_Gold_APPID() {
-		return "${config.gold.miidi.appid}";
+		return "6";
 	}
 	
 	public static String getMiidi_Gold_APPSEC() {
-		return "${config.gold.miidi.appsec}";
+		return "6666666666666666";
 	}
 }

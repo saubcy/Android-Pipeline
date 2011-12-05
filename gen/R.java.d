@@ -1,5 +1,5 @@
-D:\WorkPlace\Git\Android-Pipeline\gen\com\saubcy\lab\pipeline\R.java \
- : D:\WorkPlace\Git\Android-Pipeline\Resource\Adultmoda\drawable\icon.png \
-D:\WorkPlace\Git\Android-Pipeline\Resource\Adultmoda\layout\main.xml \
-D:\WorkPlace\Git\Android-Pipeline\Resource\Adultmoda\values\strings.xml \
-D:\WorkPlace\Git\Android-Pipeline\AndroidManifest.xml \
+C:\Documents and Settings\Administrator\git\Android-Pipeline\gen\com\saubcy\lab\pipeline\R.java \
+ : C:\Documents and Settings\Administrator\git\Android-Pipeline\Resource\MiidiGold\drawable\icon.png \
+C:\Documents and Settings\Administrator\git\Android-Pipeline\Resource\MiidiGold\layout\main.xml \
+C:\Documents and Settings\Administrator\git\Android-Pipeline\Resource\MiidiGold\values\strings.xml \
+C:\Documents and Settings\Administrator\git\Android-Pipeline\AndroidManifest.xml \

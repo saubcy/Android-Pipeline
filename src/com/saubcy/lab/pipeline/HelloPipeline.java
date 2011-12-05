@@ -48,6 +48,7 @@ implements GoldNotifier{
 				(LinearLayout)findViewById(R.id.AdLinearLayout);
 		AdsManager.showAds(Config.getOffer(), this, adLayout, adView);
 
+		Config.gm.setIcon(R.drawable.icon);
 		Config.gm.init(Config.getGoldOffer(), this);
 		Config.gm.refreshGold(Config.getGoldOffer(), this);
 	}

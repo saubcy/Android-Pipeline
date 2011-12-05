@@ -17,13 +17,13 @@
 	<property name="config.logging" 
 		value="true"/>
 	<property name="config.testmode" 
-		value="false"/>
+		value="true"/>
 	<property name="config.gold" 
 		value="MIIDI"/>
 	<property name="config.gold.miidi.appid"
-		value="8" />
+		value="6" />
 	<property name="config.gold.miidi.appsec"
-		value="8888888888888888" />
+		value="6666666666666666" />
 		
 	<!-- Directory for the third party java libraries -->
 	<property name="jar.libs.dir" value="libs" />
