@@ -90,7 +90,7 @@ implements GoldNotifier{
 
 	@Override
 	protected void onDestroy() {
-		AdsManager.destoryAds(Config.getOffer(), adView);
+		AdsManager.destoryAds(Config.getOffer(), adView, this);
 		super.onDestroy();
 	}
 }

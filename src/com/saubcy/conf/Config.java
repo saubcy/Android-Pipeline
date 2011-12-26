@@ -8,9 +8,9 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.NONE;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.APPJOY;
 	
-	public static GoldManager.Offers GoldOffer = GoldManager.Offers.MIIDI;
+	public static GoldManager.Offers GoldOffer = GoldManager.Offers.APPJOY;
 	
 	public static StatManager.Offers StatOffer = StatManager.Offers.NONE;
 	
@@ -101,10 +101,10 @@ public class Config
     }
     
     public static String getMiidi_Gold_APPID() {
-		return "6";
+		return "${config.gold.miidi.appid}";
 	}
 	
 	public static String getMiidi_Gold_APPSEC() {
-		return "6666666666666666";
+		return "${config.gold.miidi.appsec}";
 	}
 }

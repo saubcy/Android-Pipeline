@@ -6,24 +6,22 @@
 	<!-- Target Special Properties -->
 	
 	<!-- Name tag -->
-	<property name="release.branch" value="tapjoygold" />
+	<property name="release.branch" value="appjoy" />
 	<!-- AndroidManifest file path, use different fold to distinct
 		because the name must be exact "AndroidManifest.xml", -->
 	<property name="release.manifest" 
-		value="ManifestFiles/TapjoyGold/AndroidManifest.xml" />
+		value="ManifestFiles/Appjoy/AndroidManifest.xml" />
 	<!-- resource fold -->
-	<property name="release.res" value="Resource/TapjoyGold" />
+	<property name="release.res" value="Resource/Appjoy" />
 	<!-- Coinfig Setting -->
 	<property name="config.logging" 
 		value="true"/>
 	<property name="config.testmode" 
-		value="false"/>
+		value="true"/>
+	<property name="config.offer" 
+		value="APPJOY"/>
 	<property name="config.gold" 
-		value="TAPJOY"/>
-	<property name="config.gold.tapjoy.appid"
-		value="2560a02f-8c79-4a49-b313-a1f7d57adea5" />
-	<property name="config.gold.tapjoy.appsec"
-		value="oLkrNEhiumWKG6DdOT1W" />
+		value="APPJOY"/>
 		
 	<!-- Directory for the third party java libraries -->
 	<property name="jar.libs.dir" value="libs" />
@@ -31,7 +29,7 @@
 	<!-- create a path with all the jar files, from the main project and the
 		libraries -->
 	<path id="jar.libs.ref">
-		<fileset dir="${jar.libs.absolute.dir}" includes="${gold.tapjoy}" />
+		<fileset dir="${jar.libs.absolute.dir}" includes="${gold.appjoy}" />
 		<fileset dir="${jar.libs.absolute.dir}" includes="android_pipeline.jar" />
 		<path refid="project.libraries.jars" />
 	</path>
