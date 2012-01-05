@@ -58,6 +58,7 @@ implements GoldNotifier{
 		super.onCreateOptionsMenu(menu);
 		menu.add(0, 0, 0, "walls");
 		menu.add(0, 1, 1, "spend 1");
+		menu.add(0, 2, 2, "award 1");
 		return true;
 	}
 
@@ -70,6 +71,8 @@ implements GoldNotifier{
 		case 1:
 			Config.gm.spendGold(Config.getGoldOffer(), this, 1);
 			return true;
+		case 2:
+			Config.gm.awardGold(Config.getGoldOffer(), this, 1);
 		}
 
 		return false;

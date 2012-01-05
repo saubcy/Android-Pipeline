@@ -8,9 +8,9 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.APPJOY;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.NONE;
 	
-	public static GoldManager.Offers GoldOffer = GoldManager.Offers.APPJOY;
+	public static GoldManager.Offers GoldOffer = GoldManager.Offers.TAPJOY;
 	
 	public static StatManager.Offers StatOffer = StatManager.Offers.NONE;
 	
@@ -19,7 +19,7 @@ public class Config
     }
     
     public static boolean getTESTMODE() {
-    	return true;
+    	return false;
     }
      
     public static AdsManager.Offers getOffer() {
@@ -93,11 +93,11 @@ public class Config
     }
     
     public static String getTapjoy_Gold_APPID() {
-    	return "${config.gold.tapjoy.appid}";
+    	return "2560a02f-8c79-4a49-b313-a1f7d57adea5";
     }
     
     public static String getTapjoy_Gold_APPSEC() {
-    	return "${config.gold.tapjoy.appsec}";
+    	return "oLkrNEhiumWKG6DdOT1W";
     }
     
     public static String getMiidi_Gold_APPID() {
