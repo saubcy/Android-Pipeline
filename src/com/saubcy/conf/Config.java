@@ -10,7 +10,7 @@ public class Config
 	
 	public static AdsManager.Offers AdOffer = AdsManager.Offers.NONE;
 	
-	public static GoldManager.Offers GoldOffer = GoldManager.Offers.TAPJOY;
+	public static GoldManager.Offers GoldOffer = GoldManager.Offers.YOUMI;
 	
 	public static StatManager.Offers StatOffer = StatManager.Offers.NONE;
 	
@@ -77,11 +77,11 @@ public class Config
     
     // GOLD OFFER IDS
     public static String getYoumi_Gold_APPID() {
-    	return "${config.gold.youmi.appid}";
+    	return "8878060a871c9b70";
     }
     
     public static String getYoumi_Gold_APPSEC() {
-    	return "${config.gold.youmi.appsec}";
+    	return "67f06556cd5c0d05";
     }
     
     public static String getWiyun_Gold_APPID() {
@@ -93,11 +93,11 @@ public class Config
     }
     
     public static String getTapjoy_Gold_APPID() {
-    	return "2560a02f-8c79-4a49-b313-a1f7d57adea5";
+    	return "${config.gold.tapjoy.appid}";
     }
     
     public static String getTapjoy_Gold_APPSEC() {
-    	return "oLkrNEhiumWKG6DdOT1W";
+    	return "${config.gold.tapjoy.appsec}";
     }
     
     public static String getMiidi_Gold_APPID() {
