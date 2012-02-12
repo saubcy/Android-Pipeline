@@ -18,5 +18,6 @@
 	<classpathentry kind="lib" path="libs/adultmodasdk11.jar"/>
 	<classpathentry kind="lib" path="libs/uu_ad_sdk_1.0.0.jar"/>
 	<classpathentry kind="lib" path="libs/miidicredit_android_1_5_6.jar"/>
+	<classpathentry kind="lib" path="libs/momark.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

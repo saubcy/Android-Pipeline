@@ -19,6 +19,7 @@
 		<antcall target="umeng"/>
 		<antcall target="adultmoda"/>
 		<antcall target="appjoy"/>
+		<antcall target="momark"/>
 	</target>
 		
 	<target name="clean">
@@ -139,4 +140,12 @@
 		<ant antfile="AntFiles/v_appjoy.xml" 
 			target="release"/>
 	</target>
+	
+	<target name="momark">
+		<ant antfile="AntFiles/v_momark.xml" 
+			target="clean"/>
+		<echo message="build momark"/>
+		<ant antfile="AntFiles/v_momark.xml" 
+			target="release"/>
+		</target>
 </project>

@@ -18,6 +18,8 @@
 		value="WiAd.jar" />
 	<property name="ads.adultmoda"
 		value="adultmodasdk11.jar" />
+	<property name="ads.momark"
+			value="momark.jar" />
 	
 	<property name="gold.tapjoy" 
 		value="tapjoy_8.1.1.jar" />

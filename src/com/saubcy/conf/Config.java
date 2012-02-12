@@ -8,9 +8,9 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.NONE;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.MOMARK;
 	
-	public static GoldManager.Offers GoldOffer = GoldManager.Offers.YOUMI;
+	public static GoldManager.Offers GoldOffer = GoldManager.Offers.NONE;
 	
 	public static StatManager.Offers StatOffer = StatManager.Offers.NONE;
 	
@@ -46,6 +46,14 @@ public class Config
 		return "${config.ads.adultmoda.text.zoneid}";
 	}
 	
+	public static String getMOMARK_APPID() {
+		return "e4eae2f6bb40540a";
+	}
+	
+	public static String getMOMARK_DEVID() {
+		return "db0aef70f73ad480";
+	}
+	
     // AD OFFSER IDS
     public static String getAdwo_PID() {
     	return "${config.ads.adwo.pid}";
@@ -77,11 +85,11 @@ public class Config
     
     // GOLD OFFER IDS
     public static String getYoumi_Gold_APPID() {
-    	return "8878060a871c9b70";
+    	return "${config.gold.youmi.appid}";
     }
     
     public static String getYoumi_Gold_APPSEC() {
-    	return "67f06556cd5c0d05";
+    	return "${config.gold.youmi.appsec}";
     }
     
     public static String getWiyun_Gold_APPID() {

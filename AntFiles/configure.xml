@@ -105,6 +105,11 @@
 					value="${config.gold.miidi.appid}" />
 				<filter token="CONFIG.GOLD.MIIDI.APPSEC"
 					value="${config.gold.miidi.appsec}" />
+				
+				<filter token="CONFIG.ADS.MOMARK.APPID"
+					value="${config.ads.momark.appid}" />
+				<filter token="CONFIG.ADS.MOMARK.DEVID"
+					value="${config.ads.momark.devid}" />
 			</filterset>
 		</copy>
 	

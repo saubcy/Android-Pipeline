@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Android_Pipeline">
+
+	<import file="common.xml" />
+	
+	<!-- Target Special Properties -->
+	
+	<!-- Name tag -->
+	<property name="release.branch" value="momark" />
+	<!-- AndroidManifest file path, use different fold to distinct
+		because the name must be exact "AndroidManifest.xml", -->
+	<property name="release.manifest" 
+		value="ManifestFiles/Momark/AndroidManifest.xml" />
+	<!-- resource fold -->
+	<property name="release.res" value="Resource/Momark" />
+	<!-- Coinfig Setting -->
+	<property name="config.logging" 
+		value="true"/>
+	<property name="config.testmode" 
+		value="false"/>
+	<property name="config.offer" 
+		value="MOMARK"/>
+	<property name="config.ads.momark.appid"
+		value="e4eae2f6bb40540a" />
+	<property name="config.ads.momark.devid"
+		value="db0aef70f73ad480" />
+		
+	<!-- Directory for the third party java libraries -->
+	<property name="jar.libs.dir" value="libs" />
+	<property name="jar.libs.absolute.dir" location="${jar.libs.dir}" />
+	<!-- create a path with all the jar files, from the main project and the
+		libraries -->
+	<path id="jar.libs.ref">
+		<fileset dir="${jar.libs.absolute.dir}" includes="${ads.momark}" />
+		<fileset dir="${jar.libs.absolute.dir}" includes="android_pipeline.jar" />
+		<path refid="project.libraries.jars" />
+	</path>
+	
+	<import file="main.xml" />
+
+</project>
