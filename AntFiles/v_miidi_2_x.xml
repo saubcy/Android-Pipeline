@@ -6,24 +6,26 @@
 	<!-- Target Special Properties -->
 	
 	<!-- Name tag -->
-	<property name="release.branch" value="momark" />
+	<property name="release.branch" value="miidi_2_x" />
 	<!-- AndroidManifest file path, use different fold to distinct
 		because the name must be exact "AndroidManifest.xml", -->
 	<property name="release.manifest" 
-		value="ManifestFiles/Momark/AndroidManifest.xml" />
+		value="ManifestFiles/Miidi_2_x/AndroidManifest.xml" />
 	<!-- resource fold -->
-	<property name="release.res" value="Resource/Momark" />
+	<property name="release.res" value="Resource/Miidi_2_x" />
 	<!-- Coinfig Setting -->
 	<property name="config.logging" 
 		value="true"/>
 	<property name="config.testmode" 
-		value="false"/>
+		value="true"/>
 	<property name="config.offer" 
-		value="MOMARK"/>
-	<property name="config.ads.momark.appid"
-		value="7318778c232acca4" />
-	<property name="config.ads.momark.devid"
-		value="29bd700c8be07b68" />
+		value="MIIDI"/>
+	<property name="config.gold" 
+		value="MIIDI"/>
+	<property name="config.gold.miidi.appid"
+		value="6" />
+	<property name="config.gold.miidi.appsec"
+		value="6666666666666666" />
 		
 	<!-- Directory for the third party java libraries -->
 	<property name="jar.libs.dir" value="libs" />
@@ -31,7 +33,7 @@
 	<!-- create a path with all the jar files, from the main project and the
 		libraries -->
 	<path id="jar.libs.ref">
-		<fileset dir="${jar.libs.absolute.dir}" includes="${ads.momark}" />
+		<fileset dir="${jar.libs.absolute.dir}" includes="${gold.miidi_2_x}" />
 		<fileset dir="${jar.libs.absolute.dir}" includes="android_pipeline.jar" />
 		<path refid="project.libraries.jars" />
 	</path>

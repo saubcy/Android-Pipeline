@@ -20,6 +20,7 @@
 		<antcall target="adultmoda"/>
 		<antcall target="appjoy"/>
 		<antcall target="momark"/>
+		<antcall target="miidi_2_x"/>
 	</target>
 		
 	<target name="clean">
@@ -147,5 +148,13 @@
 		<echo message="build momark"/>
 		<ant antfile="AntFiles/v_momark.xml" 
 			target="release"/>
-		</target>
+	</target>
+	
+	<target name="miidi_2_x">
+		<ant antfile="AntFiles/v_miidi_2_x.xml" 
+			target="clean"/>
+		<echo message="build miidi"/>
+		<ant antfile="AntFiles/v_miidi_2_x.xml" 
+			target="release"/>
+	</target>
 </project>

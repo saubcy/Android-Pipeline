@@ -8,9 +8,9 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.MOMARK;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.MIIDI;
 	
-	public static GoldManager.Offers GoldOffer = GoldManager.Offers.NONE;
+	public static GoldManager.Offers GoldOffer = GoldManager.Offers.MIIDI;
 	
 	public static StatManager.Offers StatOffer = StatManager.Offers.NONE;
 	
@@ -19,7 +19,7 @@ public class Config
     }
     
     public static boolean getTESTMODE() {
-    	return false;
+    	return true;
     }
      
     public static AdsManager.Offers getOffer() {
@@ -47,11 +47,11 @@ public class Config
 	}
 	
 	public static String getMOMARK_APPID() {
-		return "e4eae2f6bb40540a";
+		return "${config.ads.momark.appid}";
 	}
 	
 	public static String getMOMARK_DEVID() {
-		return "db0aef70f73ad480";
+		return "${config.ads.momark.devid}";
 	}
 	
     // AD OFFSER IDS
@@ -109,10 +109,10 @@ public class Config
     }
     
     public static String getMiidi_Gold_APPID() {
-		return "${config.gold.miidi.appid}";
+		return "6";
 	}
 	
 	public static String getMiidi_Gold_APPSEC() {
-		return "${config.gold.miidi.appsec}";
+		return "6666666666666666";
 	}
 }
