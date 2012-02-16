@@ -46,14 +46,6 @@ public class Config
 		return "@CONFIG.ADS.ADULTMODA.TEXT.ZONEID@";
 	}
 	
-	public static String getMOMARK_APPID() {
-		return "@CONFIG.ADS.MOMARK.APPID@";
-	}
-	
-	public static String getMOMARK_DEVID() {
-		return "@CONFIG.ADS.MOMARK.DEVID@";
-	}
-	
     // AD OFFSER IDS
     public static String getAdwo_PID() {
     	return "@CONFIG.ADS.ADWO.PID@";
@@ -81,6 +73,14 @@ public class Config
 	
 	public static String getMiidi_APPSEC() {
 		return "@CONFIG.ADS.MIIDI.APPSEC@";
+	}
+	
+	public static String getMOMARK_APPID() {
+		return "@CONFIG.ADS.MOMARK.APPID@";
+	}
+	
+	public static String getMOMARK_DEVID() {
+		return "@CONFIG.ADS.MOMARK.DEVID@";
 	}
     
     // GOLD OFFER IDS
