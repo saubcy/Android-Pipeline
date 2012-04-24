@@ -82,6 +82,10 @@ public class Config
 	public static String getMOMARK_DEVID() {
 		return "@CONFIG.ADS.MOMARK.DEVID@";
 	}
+	
+	public static String getDOMOB_PID() {
+		return "@CONFIG.ADS.DOMOB.PID@";
+	}
     
     // GOLD OFFER IDS
     public static String getYoumi_Gold_APPID() {

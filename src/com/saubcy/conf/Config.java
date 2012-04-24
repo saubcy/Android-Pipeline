@@ -8,7 +8,7 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.HUAWEI;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.DOMOB;
 	
 	public static GoldManager.Offers GoldOffer = GoldManager.Offers.NONE;
 	
@@ -81,6 +81,10 @@ public class Config
 	
 	public static String getMOMARK_DEVID() {
 		return "${config.ads.momark.devid}";
+	}
+	
+	public static String getDOMOB_PID() {
+		return "56OJyM1ouMGoaSnvCK";
 	}
     
     // GOLD OFFER IDS

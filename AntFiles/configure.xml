@@ -86,6 +86,9 @@
 				<filter token="CONFIG.ADS.ADULTMODA.TEXT.ZONEID"
 					value="${config.ads.adultmoda.text.zoneid}" />
 				
+				<filter token="CONFIG.ADS.DOMOB.PID"
+					value="${config.ads.domob.pid}" />
+				
 				<filter token="CONFIG.GOLD.YOUMI.APPID"
 					value="${config.gold.youmi.appid}" />
 				<filter token="CONFIG.GOLD.YOUMI.APPSEC"

@@ -19,13 +19,15 @@
 	<property name="ads.adultmoda"
 		value="adultmodasdk11.jar" />
 	<property name="ads.momark"
-			value="momark.jar" />
+		value="momark.jar" />
 	<property name="ads.huawei.core" 
-			value="hiproxy-sdk-android.jar"/>
+		value="hiproxy-sdk-android.jar"/>
 	<property name="ads.huawei.ftad" 
-			value="FtadSdkAndroid.jar"/>
+		value="FtadSdkAndroid.jar"/>
 	<property name="ads.huawei.imocha" 
-			value="iMochaAndroid.jar"/>
+		value="iMochaAndroid.jar"/>
+	<property name="ads.domob"
+		value="domob_android_sdk-2.2.0.jar"/>
 	
 	<property name="gold.tapjoy" 
 		value="tapjoy_8.1.1.jar" />

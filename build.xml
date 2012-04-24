@@ -22,6 +22,7 @@
 		<antcall target="momark"/>
 		<antcall target="miidi_2_x"/>
 		<antcall target="huawei"/>
+		<antcall target="domob"/>
 	</target>
 		
 	<target name="clean">
@@ -164,6 +165,14 @@
 			target="clean"/>
 		<echo message="build huawei"/>
 		<ant antfile="AntFiles/v_huawei.xml" 
+			target="release"/>
+	</target>
+	
+	<target name="domob">
+		<ant antfile="AntFiles/v_domob.xml" 
+			target="clean"/>
+		<echo message="build domob"/>
+		<ant antfile="AntFiles/v_domob.xml" 
 			target="release"/>
 	</target>
 </project>
