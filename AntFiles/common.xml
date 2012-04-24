@@ -20,6 +20,12 @@
 		value="adultmodasdk11.jar" />
 	<property name="ads.momark"
 			value="momark.jar" />
+	<property name="ads.huawei.core" 
+			value="hiproxy-sdk-android.jar"/>
+	<property name="ads.huawei.ftad" 
+			value="FtadSdkAndroid.jar"/>
+	<property name="ads.huawei.imocha" 
+			value="iMochaAndroid.jar"/>
 	
 	<property name="gold.tapjoy" 
 		value="tapjoy_8.1.1.jar" />

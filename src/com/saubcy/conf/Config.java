@@ -8,9 +8,9 @@ public class Config
 {
 	public static GoldManager gm = new GoldManager();
 	
-	public static AdsManager.Offers AdOffer = AdsManager.Offers.MIIDI;
+	public static AdsManager.Offers AdOffer = AdsManager.Offers.HUAWEI;
 	
-	public static GoldManager.Offers GoldOffer = GoldManager.Offers.MIIDI;
+	public static GoldManager.Offers GoldOffer = GoldManager.Offers.NONE;
 	
 	public static StatManager.Offers StatOffer = StatManager.Offers.NONE;
 	
@@ -19,7 +19,7 @@ public class Config
     }
     
     public static boolean getTESTMODE() {
-    	return true;
+    	return false;
     }
      
     public static AdsManager.Offers getOffer() {
@@ -44,14 +44,6 @@ public class Config
 	
 	public static String getADULTMODA_TEXT_ZONEID() {
 		return "${config.ads.adultmoda.text.zoneid}";
-	}
-	
-	public static String getMOMARK_APPID() {
-		return "${config.ads.momark.appid}";
-	}
-	
-	public static String getMOMARK_DEVID() {
-		return "${config.ads.momark.devid}";
 	}
 	
     // AD OFFSER IDS
@@ -82,6 +74,14 @@ public class Config
 	public static String getMiidi_APPSEC() {
 		return "${config.ads.miidi.appsec}";
 	}
+	
+	public static String getMOMARK_APPID() {
+		return "${config.ads.momark.appid}";
+	}
+	
+	public static String getMOMARK_DEVID() {
+		return "${config.ads.momark.devid}";
+	}
     
     // GOLD OFFER IDS
     public static String getYoumi_Gold_APPID() {
@@ -109,10 +109,10 @@ public class Config
     }
     
     public static String getMiidi_Gold_APPID() {
-		return "6";
+		return "${config.gold.miidi.appid}";
 	}
 	
 	public static String getMiidi_Gold_APPSEC() {
-		return "6666666666666666";
+		return "${config.gold.miidi.appsec}";
 	}
 }

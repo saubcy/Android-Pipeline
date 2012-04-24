@@ -21,6 +21,7 @@
 		<antcall target="appjoy"/>
 		<antcall target="momark"/>
 		<antcall target="miidi_2_x"/>
+		<antcall target="huawei"/>
 	</target>
 		
 	<target name="clean">
@@ -155,6 +156,14 @@
 			target="clean"/>
 		<echo message="build miidi"/>
 		<ant antfile="AntFiles/v_miidi_2_x.xml" 
+			target="release"/>
+	</target>
+	
+	<target name="huawei">
+		<ant antfile="AntFiles/v_huawei.xml" 
+			target="clean"/>
+		<echo message="build huawei"/>
+		<ant antfile="AntFiles/v_huawei.xml" 
 			target="release"/>
 	</target>
 </project>
