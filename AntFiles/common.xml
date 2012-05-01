@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="common">
+    
+    <!-- libs config -->
+    <property name="jar.libs.base.fold" 
+	    value="libs_base" />
+    <property name="jar.libs.real.fold" 
+        value="libs" />
+    <property name="jar.libs.base.path" 
+	    location="${jar.libs.base.fold}" />
+    <property name="jar.libs.real.path" 
+        location="${jar.libs.real.fold}" />
 	
 	<!-- The config file target path -->
 	<property name="release.config.dir" location="src" />

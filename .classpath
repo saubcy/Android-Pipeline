@@ -3,24 +3,27 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="lib" path="libs/adwosdk2.3.3.jar"/>
-	<classpathentry kind="lib" path="libs/GoogleAdMobAdsSdk-4.1.1.jar"/>
-	<classpathentry kind="lib" path="libs/youmi-android-v3.03_2011-9-30.jar"/>
-	<classpathentry kind="lib" path="libs/AppMediaAdAndroidSdk-1.0.3.jar"/>
-	<classpathentry kind="lib" path="libs/youmi-appoffer_2011-8-29.jar"/>
-	<classpathentry kind="lib" path="libs/AppOffer_1.5.2.jar"/>
-	<classpathentry kind="lib" path="libs/WiOffer.jar"/>
-	<classpathentry kind="lib" path="libs/tapjoy_8.1.1.jar"/>
-	<classpathentry kind="lib" path="libs/android_pipeline.jar" sourcepath="/Android_Pipeline_Lib"/>
-	<classpathentry kind="lib" path="libs/Analytics_Android_SDK_3.0.jar"/>
-	<classpathentry kind="lib" path="libs/adk_android_1_0_6.jar"/>
-	<classpathentry kind="lib" path="libs/WiAd.jar"/>
-	<classpathentry kind="lib" path="libs/adultmodasdk11.jar"/>
-	<classpathentry kind="lib" path="libs/uu_ad_sdk_1.0.0.jar"/>
-	<classpathentry kind="lib" path="libs/miidicredit_android_1_5_6.jar"/>
-	<classpathentry kind="lib" path="libs/momark.jar"/>
-	<classpathentry kind="lib" path="libs/FtadSdkAndroid.jar"/>
-	<classpathentry kind="lib" path="libs/hiproxy-sdk-android.jar"/>
-	<classpathentry kind="lib" path="libs/iMochaAndroid.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="libs_base/adk_android_1_0_6.jar"/>
+	<classpathentry kind="lib" path="libs_base/adultmodasdk11.jar"/>
+	<classpathentry kind="lib" path="libs_base/adwosdk2.3.3.jar"/>
+	<classpathentry kind="lib" path="libs_base/Analytics_Android_SDK_3.0.jar"/>
+	<classpathentry kind="lib" path="libs_base/android_pipeline.jar"/>
+	<classpathentry kind="lib" path="libs_base/AndroidAnalyticSDK3.1.1.jar"/>
+	<classpathentry kind="lib" path="libs_base/AppMediaAdAndroidSdk-1.0.3.jar"/>
+	<classpathentry kind="lib" path="libs_base/AppOffer_1.5.2.jar"/>
+	<classpathentry kind="lib" path="libs_base/domob_android_sdk-2.2.0.jar"/>
+	<classpathentry kind="lib" path="libs_base/FtadSdkAndroid.jar"/>
+	<classpathentry kind="lib" path="libs_base/GoogleAdMobAdsSdk-4.1.1.jar"/>
+	<classpathentry kind="lib" path="libs_base/hiproxy-sdk-android.jar"/>
+	<classpathentry kind="lib" path="libs_base/iMochaAndroid.jar"/>
+	<classpathentry kind="lib" path="libs_base/miidicredit_android_1_5_6.jar"/>
+	<classpathentry kind="lib" path="libs_base/momark.jar"/>
+	<classpathentry kind="lib" path="libs_base/tapjoy_8.1.1.jar"/>
+	<classpathentry kind="lib" path="libs_base/uu_ad_sdk_1.0.0.jar"/>
+	<classpathentry kind="lib" path="libs_base/WiAd.jar"/>
+	<classpathentry kind="lib" path="libs_base/WiOffer.jar"/>
+	<classpathentry kind="lib" path="libs_base/youmi-android-v3.03_2011-9-30.jar"/>
+	<classpathentry kind="lib" path="libs_base/youmi-appoffer_2011-8-29.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

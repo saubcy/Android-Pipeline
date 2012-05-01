@@ -22,10 +22,9 @@
 		value="HUAWEI"/>
 		
 	<!-- Directory for the third party java libraries -->
+	<!--  
 	<property name="jar.libs.dir" value="libs" />
 	<property name="jar.libs.absolute.dir" location="${jar.libs.dir}" />
-	<!-- create a path with all the jar files, from the main project and the
-		libraries -->
 	<path id="jar.libs.ref">
 		<fileset dir="${jar.libs.absolute.dir}" includes="${ads.huawei.core}" />
 		<fileset dir="${jar.libs.absolute.dir}" includes="${ads.huawei.ftad}" />
@@ -33,6 +32,27 @@
 		<fileset dir="${jar.libs.absolute.dir}" includes="android_pipeline.jar" />
 		<path refid="project.libraries.jars" />
 	</path>
+	-->
+	
+	<target name="copy_libs">
+	    <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${jar.libs.real.path}">
+                <include name="**/*"/>
+            </fileset>
+        </delete> 
+        <copy file="${jar.libs.base.path}/${ads.huawei.core}"
+			tofile="${jar.libs.real.path}/${ads.huawei.core}"
+		    overwrite="true" />
+        <copy file="${jar.libs.base.path}/${ads.huawei.ftad}"
+			tofile="${jar.libs.real.path}/${ads.huawei.ftad}"
+		    overwrite="true" />
+        <copy file="${jar.libs.base.path}/${ads.huawei.imocha}"
+			tofile="${jar.libs.real.path}/${ads.huawei.imocha}"
+		    overwrite="true" />
+         <copy file="${jar.libs.base.path}/android_pipeline.jar" 
+			tofile="${jar.libs.real.path}/android_pipeline.jar"
+		    overwrite="true" />
+	</target>  
 	
 	<import file="main.xml" />
 

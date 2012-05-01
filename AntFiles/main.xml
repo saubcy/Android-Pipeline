@@ -13,6 +13,10 @@
     <property name="java.encoding" value="UTF-8" />
     <property name="java.target" value="1.6" />
     <property name="java.source" value="1.6" />
+    <property name="java.compilerargs" value="" />	<!-- new from v18 -->
+    
+    <!-- instrumentation options -->
+    <property name="emma.filter" value="" />	<!-- new from v18 -->
 
     <!-- Verbosity -->
     <property name="verbose" value="false" />
@@ -40,6 +44,10 @@
     <taskdef name="renderscript"
             classname="com.android.ant.RenderScriptTask"
             classpathref="android.antlibs" />
+    
+    <taskdef name="buildconfig"
+            classname="com.android.ant.BuildConfigTask"
+            classpathref="android.antlibs" />	<!-- new from v18 -->
 
     <taskdef name="dex"
             classname="com.android.ant.DexExecTask"
@@ -70,7 +78,6 @@
     <taskdef resource="emma_ant.properties" classpathref="emma.lib" />
     <!-- End of emma configuration -->
 
-
     <!-- ********** Other Properties ********** -->
     <!-- overriding these properties may break the build
          unless the whole file is updated -->
@@ -82,7 +89,7 @@
 	<property name="resource.dir" value="${release.res}" />
     <property name="resource.absolute.dir" location="${resource.dir}" />
     <property name="asset.absolute.dir" location="assets" />
-    <property name="jar.libs.dir" value="libs" />
+    <property name="jar.libs.dir" value="${jar.libs.real.fold}" />
     <property name="jar.libs.absolute.dir" location="${jar.libs.dir}" />
     <property name="native.libs.absolute.dir" location="libs" />
 
@@ -147,6 +154,17 @@
 
     <!-- properties for packaging -->
     <property name="build.packaging.nocrunch" value="true" />
+    
+    <!-- whether we need to fork javac.
+         This is only needed on Windows when running Java < 7 -->
+    <condition else="false" property="need.javac.fork">	<!-- new from v18 -->
+        <and>
+            <matches pattern="1\.[56]" string="${java.specification.version}"/>
+            <not>
+                <os family="unix"/>
+            </not>
+        </and>
+    </condition>
 
     <!-- ********** Macros ********** -->
 
@@ -218,9 +236,7 @@
             <dex executable="${dx}"
                     output="${intermediate.dex.file}"
                     nolocals="@{nolocals}"
-                    verbose="${verbose}"
-                    previousBuildType="${build.last.target}"
-                    buildType="${build.target}">
+                    verbose="${verbose}">
                 <path path="${out.dex.input.absolute.dir}"/>
                 <path refid="out.dex.jar.input.ref" />
                 <external-libs />
@@ -327,14 +343,24 @@
 
     <!-- ********** Build Targets ********** -->
 
+	<!-- target to disable building dependencies -->
+    <target name="nodeps">	<!-- new from v18 -->
+        <property name="dont.do.deps" value="true" />
+    </target>
+
     <!-- this target simply force running -setup making
          the project info be read. To be used as
              ant all clean
          to clean the main project as well as the libraries and tested project -->
-    <target name="all" depends="-setup"/>
+    <target name="all" depends="-setup"/>	<!-- new from v18 -->
+    
+    <!-- empty default pre-clean target. Create a similar target in
+         your build.xml and it'll be called instead of this one. -->
+    <target name="-pre-clean"/>
 
     <!-- clean target -->
-    <target name="clean" description="Removes output files created by other targets.">
+   	<target name="clean" depends="-pre-clean"
+            description="Removes output files created by other targets.">	<!-- new from v18 -->
         <delete dir="${out.absolute.dir}" verbose="${verbose}" />
         <delete dir="${gen.absolute.dir}" verbose="${verbose}" />
 
@@ -354,13 +380,14 @@
         <if>
             <condition>
                 <isreference refid="project.libraries" />
+                <not><isset property="dont.do.deps" /></not>
             </condition>
             <then>
                 <subant
                         buildpathref="project.libraries"
                         antfile="build.xml"
                         failonerror="true">
-                    <target name="all" />
+                    <target name="nodeps" />
                     <target name="clean" />
                 </subant>
             </then>
@@ -374,11 +401,18 @@
                 <not><isset property="setup.done" /></not>
             </condition>
             <then>
+                <echo>Creating output directories if needed...</echo>	<!-- new from v18 -->
+                <mkdir dir="${resource.absolute.dir}" />
+                <mkdir dir="${jar.libs.absolute.dir}" />
+                <mkdir dir="${out.absolute.dir}" />
+                <mkdir dir="${out.res.absolute.dir}" />
+                
                 <property name="setup.done" value="true" />
                 <echo>Gathering info for ${ant.project.name}...</echo>
                 <!-- load project properties, resolve Android target, library dependencies
                      and set some properties with the results.
                      All property names are passed as parameters ending in -Out -->
+                <!-- new from v18 -->
                 <setup
                         projectTypeOut="android.project.type"
                         androidJarFileOut="android.jar"
@@ -387,11 +421,12 @@
                         renderScriptIncludeDirOut="android.rs"
                         bootclasspathrefOut="android.target.classpath"
                         projectLibrariesRootOut="project.libraries"
-                        projectLibrariesJarsOut="project.libraries.jars"
+                        projectLibrariesJarsOut="jar.libs.ref"
                         projectLibrariesResOut="project.libraries.res"
                         projectLibrariesPackageOut="project.libraries.package"
                         projectLibrariesLibsOut="project.libraries.libs"
                         targetApiOut="target.api"
+                        verbose="${verbose}"	
                 />
 
                 <!-- sets a few boolean based on android.project.type
@@ -427,17 +462,21 @@
         <property name="build.last.is.signing.debug" value="${build.is.signing.debug}" />
 
         <!-- compile the libraries if any -->
-        <if>
+        <if>	<!-- new from v18 -->
             <condition>
-                <isreference refid="project.libraries" />
+                <and>
+                    <isreference refid="project.libraries" />
+                    <not><isset property="dont.do.deps" /></not>
+                </and>
             </condition>
             <then>
                 <echo>Building Libraries</echo>
-                <subant
+                <subant failonerror="true"
                         buildpathref="project.libraries"
-                        antfile="build.xml"
-                        target="${build.target}"
-                        failonerror="true"/>
+                        antfile="build.xml">
+                    <target name="nodeps" />
+                    <target name="${build.target}" />
+                </subant>
                 <echo></echo>
                 <echo>############################################</echo>
                 <echo>**** Back to project ${ant.project.name} ****</echo>
@@ -468,12 +507,48 @@
         <!-- Value of the hasCode attribute (Application node) extracted from manifest file -->
         <xpath input="${release.manifest}" expression="/manifest/application/@android:hasCode"
                     output="manifest.hasCode" default="true"/>
-
-        <!-- special case for instrumented: if the previous build was
-             instrumented but not this one, clear out the compiled code -->
-        <if>
+        
+        <!-- If the "debug" build type changed, clear out the compiled code.
+             This is to make sure the new BuildConfig.DEBUG value is picked up
+             as javac can't deal with this type of change in its dependency computation. -->
+        <if>	<!-- new from v18 -->
             <condition>
                 <and>
+                    <length string="${build.last.is.packaging.debug}" trim="true" when="greater" length="0" />
+                    <not><equals
+                            arg1="${build.is.packaging.debug}"
+                            arg2="${build.last.is.packaging.debug}" /></not>
+                </and>
+            </condition>
+            <then>
+                <echo>Switching between debug and non debug build: Deleting previous compilation output...</echo>
+                <delete dir="${out.classes.absolute.dir}" verbose="${verbose}" />
+            </then>
+            <else>
+                <!-- Else, we may still need to clean the code, for another reason.
+                     special case for instrumented: if the previous build was
+                     instrumented but not this one, clear out the compiled code -->
+                <if>
+                    <condition>
+                        <and>
+                            <istrue value="${build.last.is.instrumented}" />
+                            <isfalse value="${build.is.instrumented}" />
+                        </and>
+                    </condition>
+                    <then>
+                        <echo>Switching from instrumented to non-instrumented build: Deleting previous compilation output...</echo>
+                        <delete dir="${out.classes.absolute.dir}" verbose="${verbose}" />
+                    </then>
+                </if>
+            </else>
+        </if>
+
+        <!-- special case for instrumented: if the previous build was
+             instrumented but not this one, clear out the compiled code -->	<!-- new from v18 -->
+        <!-- 
+        <if>
+            <condition>
+               <and>
                     <istrue value="${build.last.is.instrumented}" />
                     <isfalse value="${build.is.instrumented}" />
                 </and>
@@ -484,6 +559,7 @@
                 <delete dir="${out.classes.absolute.dir}" verbose="${verbose}" />
             </then>
         </if>
+        -->
 
         <echo>Creating output directories if needed...</echo>
         <mkdir dir="${resource.absolute.dir}" />
@@ -533,8 +609,20 @@
                     nonConstantId="${android.library}"
                     projectLibrariesResName="project.libraries.res"
                     projectLibrariesPackageName="project.libraries.package">
+                <res path="${out.res.absolute.dir}" />	<!-- new from v18 -->
                 <res path="${resource.absolute.dir}" />
             </aapt>
+            
+            <echo>----------</echo>	<!-- new from v18 -->
+            <echo>Handling BuildConfig class...</echo>
+            <xpath input="${release.manifest}" expression="/manifest/@package"
+                    output="manifest.package" />
+            <buildconfig
+                    genFolder="${gen.absolute.dir}"
+                    package="${manifest.package}"
+                    buildType="${build.is.packaging.debug}"
+                    previousBuildType="${build.last.is.packaging.debug}"/>
+            
         </do-only-if-manifest-hasCode>
     </target>
 
@@ -557,19 +645,23 @@
                     else="${jar.libs.dir}">
                 <isset property="tested.project.absolute.dir" />
             </condition>
+            <!-- new from v18 -->
             <javac encoding="${java.encoding}"
                     source="${java.source}" target="${java.target}"
                     debug="true" extdirs=""
+                    includeantruntime="false"	
                     destdir="${out.classes.absolute.dir}"
                     bootclasspathref="android.target.classpath"
                     verbose="${verbose}"
                     classpath="${extensible.classpath}"
-                    classpathref="jar.libs.ref">
+                    classpathref="jar.libs.ref"
+                    fork="${need.javac.fork}">	
                 <src path="${source.absolute.dir}" />
                 <src path="${gen.absolute.dir}" />
                 <classpath>
                     <fileset dir="${extensible.libs.classpath}" includes="*.jar" />
                 </classpath>
+                <compilerarg line="${java.compilerargs}" />	<!-- new from v18 -->
             </javac>
             <!-- if the project is a library then we generate a jar file -->
             <if condition="${project.is.library}">
@@ -585,7 +677,10 @@
                         </then>
                     </if>
                     <jar destfile="${out.library.jar.file}">
-                        <fileset dir="${out.classes.absolute.dir}" excludes="**/R.class **/R$*.class"/>
+                        <!-- new from v18 -->
+                        <fileset dir="${out.classes.absolute.dir}"	
+                                includes="**/*.class"
+                                excludes="${manifest.package.path}/R.class ${manifest.package.path}/R$*.class ${manifest.package.path}/Manifest.class ${manifest.package.path}/Manifest$*.class ${manifest.package.path}/BuildConfig.class"/>
                         <fileset dir="${source.absolute.dir}" excludes="**/*.java ${android.package.excludes}" />
                     </jar>
                 </then>
@@ -601,6 +696,8 @@
                                mode="overwrite"
                                instrpath="${out.absolute.dir}/classes"
                                outdir="${out.absolute.dir}/classes">
+                            <filter excludes="${manifest.package}.R,${manifest.package}.R$$*,${manifest.package}.BuildConfig" />
+                            <filter value="${emma.filter}" />	<!-- new from v18 -->
                         </instr>
                         <!-- TODO: exclusion filters on R*.class and allowing custom exclusion from
                              user defined file -->
@@ -778,8 +875,16 @@
         </do-only-if-not-library>
     </target>
 
+    <target name="-post-package" />
+    <target name="-post-build" />
+    
     <target name="-set-mode-check">
+        <!--  
         <fail if="out.final.file"
+                message="Cannot run two different modes at the same time. If you are running more than one debug/release/instrument type targets, call them from different Ant calls." />
+    	-->
+    	<!-- new from v18 -->
+    	<fail if="build.is.mode.set"	
                 message="Cannot run two different modes at the same time. If you are running more than one debug/release/instrument type targets, call them from different Ant calls." />
     </target>
 
@@ -789,6 +894,7 @@
 
         <property name="out.packaged.file" location="${out.absolute.dir}/${ant.project.name}-debug-unaligned.apk" />
         <property name="out.final.file" location="${out.release.file}" />
+        <property name="build.is.mode.set" value="true" />	<!-- new from v18 -->
     </target>
 
 
@@ -876,6 +982,7 @@
     <target name="-set-release-mode" depends="-set-mode-check">
         <property name="out.packaged.file" location="${out.absolute.dir}/${ant.project.name}-release-unsigned.apk" />
         <property name="out.final.file" location="${out.release.file}" />
+        <property name="build.is.mode.set" value="true" />	<!-- new from v18 -->
 
         <!-- record the current build target -->
         <property name="build.target" value="release" />
@@ -906,15 +1013,7 @@
         </if>
     </target>
 
-    <!-- This runs -package-release and -release-nosign first and then runs
-         only if release-sign is true (set in -release-check,
-         called by -release-no-sign)-->
-    <target name="release"
-                depends="config, -set-release-mode, -release-obfuscation-check, -package, -release-prompt-for-password, -release-nosign"
-                if="has.keystore"
-                description="Builds the application. The generated apk file must be signed before
-                            it is published.">
-
+	<target name="-release-sign" if="has.keystore" >	<!-- new from v18 -->
         <!-- only create apk if *not* a library project -->
         <do-only-if-not-library elseText="Library project: do not create apk..." >
             <sequential>
@@ -932,12 +1031,22 @@
                         verbose="${verbose}" />
 
                 <!-- Zip aligns the APK -->
-                <zipalign-helper in.package="${out.unaligned.file}"
-                                           out.package="${out.final.file}" />
+                <zipalign-helper
+                        in.package="${out.unaligned.file}"
+                        out.package="${out.final.file}" />
                 <echo>Release Package: ${out.final.file}</echo>
             </sequential>
         </do-only-if-not-library>
         <record-build-info />
+    </target>   
+    
+	<!-- This runs -package-release and -release-nosign first and then runs
+         only if release-sign is true (set in -release-check,
+         called by -release-no-sign)-->
+    <!-- new from v18 -->
+    <target name="release"
+                depends="config, -set-release-mode, -release-obfuscation-check, -package, -post-package, -release-prompt-for-password, -release-nosign, -release-sign, -post-build"
+                description="Builds the application in release mode.">
     </target>
 
     <!-- ********** Instrumented specific targets ********** -->
@@ -949,6 +1058,7 @@
     <target name="-set-instrumented-mode" depends="-set-mode-check">
         <property name="out.packaged.file" location="${out.absolute.dir}/${ant.project.name}-instrumented-unaligned.apk" />
         <property name="out.final.file" location="${out.absolute.dir}/${ant.project.name}-instrumented.apk" />
+        <property name="build.is.mode.set" value="true" />	<!-- new from v18 -->
 
         <!-- whether the build is an instrumented build. -->
         <property name="build.is.instrumented" value="true" />
@@ -986,19 +1096,8 @@
             </else>
         </if>
     </target>
-
-    <!-- Installs the tested project. This make sure to install the proper package based on
-         the value of emma.enabled -->
-    <target name="-install-tested-project" depends="-test-project-check, -setup">
-        <!-- figure out which tested package to install based on emma.enabled -->
-        <condition property="tested.project.install.target" value="installi" else="installd">
-            <isset property="emma.enabled" />
-        </condition>
-        <subant target="${tested.project.install.target}" failonerror="true">
-            <fileset dir="${tested.project.absolute.dir}" includes="build.xml" />
-        </subant>
-    </target>
-
+    
+	<!-- new from v18 -->
     <target name="test" depends="-test-project-check"
                 description="Runs tests from the package defined in test.package property">
 
@@ -1009,6 +1108,8 @@
         <!-- Application package of the tested project extracted from its manifest file -->
         <xpath input="${tested.project.absolute.dir}/AndroidManifest.xml"
                 expression="/manifest/@package" output="tested.manifest.package" />
+        <xpath input="AndroidManifest.xml"
+                expression="/manifest/@package" output="manifest.package" />
 
         <property name="emma.dump.file"
                 value="/data/data/${tested.manifest.package}/coverage.ec" />
@@ -1054,9 +1155,8 @@
         </if>
     </target>
 
-
     <!-- ********** Install/uninstall specific targets ********** -->
-
+	<!-- new from v18 -->
     <target name="install"
                 description="Installs the newly build package. Must be used in conjunction with a build target
                             (debug/release/instrument). If the application was previously installed, the application
@@ -1073,7 +1173,7 @@
                             <resourceexists>
                                 <file file="${out.final.file}"/>
                             </resourceexists>
-                            </condition>
+                        </condition>
                         <then>
                             <echo>Installing ${out.final.file} onto default emulator or device...</echo>
                             <exec executable="${adb}" failonerror="true">
@@ -1082,9 +1182,33 @@
                                 <arg value="-r" />
                                 <arg path="${out.final.file}" />
                             </exec>
+
+                            <!-- now install the tested project if applicable -->
+                            <!-- can't use project.is.test since the setup target might not have run -->
+                            <if>
+                                <condition>
+                                    <and>
+                                        <isset property="tested.project.dir" />
+                                        <not>
+                                            <isset property="dont.do.deps" />
+                                        </not>
+                                    </and>
+                                </condition>
+                                <then>
+                                    <property name="tested.project.absolute.dir" location="${tested.project.dir}" />
+
+                                    <!-- figure out which tested package to install based on emma.enabled -->
+                                    <condition property="tested.project.install.target" value="installi" else="installd">
+                                        <isset property="emma.enabled" />
+                                    </condition>
+                                    <subant target="${tested.project.install.target}" failonerror="true">
+                                        <fileset dir="${tested.project.absolute.dir}" includes="build.xml" />
+                                    </subant>
+                                </then>
+                            </if>
                         </then>
                         <else>
-                            <fail message="File {out.final.file} does not exist." />
+                            <fail message="File ${out.final.file} does not exist." />
                         </else>
                     </if>
                 </then>
@@ -1117,7 +1241,7 @@
             description="Installs (only) the release package." />
     <target name="installi" depends="-set-instrumented-mode, install"
             description="Installs (only) the instrumented package." />
-    <target name="installt" depends="-install-tested-project, installd"
+    <target name="installt" depends="-test-project-check, installd"
             description="Installs (only) the test and tested packages." />
 
 
@@ -1140,7 +1264,18 @@
             </else>
         </if>
 
-        <if condition="${project.is.test}">
+        <!-- Now uninstall the tested project, if applicable -->
+        <!-- can't use project.is.test since the setup target might not have run -->
+       	<!-- new from v18 -->
+        <if>
+            <condition>
+                <and>
+                    <isset property="tested.project.dir" />
+                    <not>
+                        <isset property="dont.do.deps" />
+                    </not>
+                </and>
+            </condition>
             <then>
                 <property name="tested.project.absolute.dir" location="${tested.project.dir}" />
 
@@ -1174,8 +1309,14 @@
         <echo>              (tested projects and libraries)at the same time</echo>
         <echo>              using: 'ant all clean'</echo>
         <echo>   debug:     Builds the application and signs it with a debug key.</echo>
+        <echo>              The 'nodeps' target can be used to only build the</echo>
+        <echo>              current project and ignore the libraries using:</echo>
+        <echo>              'ant nodeps debug'</echo>
         <echo>   release:   Builds the application. The generated apk file must be</echo>
         <echo>              signed before it is published.</echo>
+        <echo>              The 'nodeps' target can be used to only build the</echo>
+        <echo>              current project and ignore the libraries using:</echo>
+        <echo>              'ant nodeps release'</echo>
         <echo>   instrument:Builds an instrumented package and signs it with a</echo>
         <echo>              debug key.</echo>
         <echo>   test:      Runs the tests. Project must be a test project and</echo>
@@ -1192,8 +1333,10 @@
         <echo>   installd:  Installs (only) the debug package.</echo>
         <echo>   installr:  Installs (only) the release package.</echo>
         <echo>   installi:  Installs (only) the instrumented package.</echo>
-        <echo>   installt:  Installs (only) the test and tested packages.</echo>
+        <echo>   installt:  Installs (only) the test and tested packages (unless</echo>
+        <echo>              nodeps is used as well.</echo>
         <echo>   uninstall: Uninstalls the application from a running emulator or</echo>
-        <echo>              device.</echo>
+        <echo>              device. Also uninstall tested package if applicable</echo>
+        <echo>              unless 'nodeps' is used as well.</echo>
     </target>
 </project>

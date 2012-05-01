@@ -26,15 +26,29 @@
 		value="67f06556cd5c0d05" />
 		
 	<!-- Directory for the third party java libraries -->
+	<!--  
 	<property name="jar.libs.dir" value="libs" />
 	<property name="jar.libs.absolute.dir" location="${jar.libs.dir}" />
-	<!-- create a path with all the jar files, from the main project and the
-		libraries -->
 	<path id="jar.libs.ref">
 		<fileset dir="${jar.libs.absolute.dir}" includes="${gold.youmi}" />
 		<fileset dir="${jar.libs.absolute.dir}" includes="android_pipeline.jar" />
 		<path refid="project.libraries.jars" />
 	</path>
+	-->
+	
+	<target name="copy_libs">
+	    <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${jar.libs.real.path}">
+                <include name="**/*"/>
+            </fileset>
+        </delete> 
+        <copy file="${jar.libs.base.path}/${gold.youmi}" 
+			tofile="${jar.libs.real.path}/${gold.youmi}"
+		    overwrite="true" />
+         <copy file="${jar.libs.base.path}/android_pipeline.jar" 
+			tofile="${jar.libs.real.path}/android_pipeline.jar"
+		    overwrite="true" />
+	</target>  
 	
 	<import file="main.xml" />
 

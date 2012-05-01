@@ -38,7 +38,7 @@
 		<property name="config.stat" 
 			value="NONE"/>
 	</target>
-
+	
 	<target name="config" 
 		depends="set_offer_none, set_gold_none, set_stat_none">
 		

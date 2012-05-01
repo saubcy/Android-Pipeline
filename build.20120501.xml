@@ -173,8 +173,6 @@
 			target="clean"/>
 		<echo message="build domob"/>
 		<ant antfile="AntFiles/v_domob.xml" 
-			target="copy_libs"/>
-		<ant antfile="AntFiles/v_domob.xml" 
 			target="release"/>
 	</target>
 </project>
